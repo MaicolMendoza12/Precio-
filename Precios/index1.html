@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precio de Departamentos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Senati</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Precio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre Nosotros</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <div class="main-container container">
+        <div class="row">
+            <div class="col-md-6 header-content">
+                <h1>Mendoza Pocomucha Maicol</h1>
+                <p>Estimador de Precio de Departamentos</p>
+                <a href="index.html" class="btn btn-primary">Regresar</a>
+            </div>
+
+            <div class="col-md-6 form-section">
+                <h4>Red Neuronal para calcular precio de Departamentos</h4>
+                <form id="priceForm">
+                    <div class="mb-3">
+                        <label for="inputArea" class="form-label">Área (m²):</label>
+                        <input type="number" class="form-control" id="inputArea" placeholder="Área en m²" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputRooms" class="form-label">Número de habitaciones:</label>
+                        <input type="number" class="form-control" id="inputRooms" placeholder="Habitaciones" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputFloor" class="form-label">Número de planta:</label>
+                        <input type="number" class="form-control" id="inputFloor" placeholder="Planta" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputElevator" class="form-label">Ascensor (0 = No, 1 = Sí):</label>
+                        <input type="number" class="form-control" id="inputElevator" min="0" max="1" placeholder="0 o 1"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputExterior" class="form-label">Exterior (0 = No, 1 = Sí):</label>
+                        <input type="number" class="form-control" id="inputExterior" min="0" max="1" placeholder="0 o 1"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputState" class="form-label">Estado (0 = Malo, 1 = Bueno, 2 = Excelente):</label>
+                        <input type="number" class="form-control" id="inputState" min="0" max="2" placeholder="0, 1 o 2"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputCentric" class="form-label">Céntrico (0 = No, 1 = Sí):</label>
+                        <input type="number" class="form-control" id="inputCentric" min="0" max="1" placeholder="0 o 1"
+                            required>
+                    </div>
+                    <button type="button" class="btn btn-primary w-100" onclick="predictPrice()">Calcular Precio</button>
+                </form>
+                <div id="result" class="text-center"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper row4">
+        <footer id="footer" class="hoc clear">
+            <div class="one_quarter first">
+                <h6 class="heading">Sobre nosotros</h6>
+                <p>Mendoza Grupo Inmobiliario es una empresa dedicada a brindar soluciones habitacionales y asesoría inmobiliaria.</p>
+            </div>
+            <div class="one_quarter">
+                <h6 class="heading">Servicios</h6>
+                <ul class="nospace linklist">
+                    <li><a href="#">Compra</a></li>
+                    <li><a href="#">Venta</a></li>
+                    <li><a href="#">Alquiler</a></li>
+                    <li><a href="#">Asesoría</a></li>
+                    <li><a href="#">Valoración de propiedades</a></li>
+                </ul>
+            </div>
+            <div class="one_quarter">
+                <h6 class="heading">Contáctanos</h6>
+                <ul class="nospace linklist">
+                    <li><a href="#">info@dominio.com</a></li>
+                    <li><a href="#">+00 (123) 456 7890</a></li>
+                    <li><a href="#">Dirección</a></li>
+                </ul>
+            </div>
+            <div class="one_quarter">
+                <h6 class="heading">Redes sociales</h6>
+                <ul class="nospace linklist">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.21.0/dist/tf.min.js"></script>
+
+    <script type="text/javascript">
+        let modelo = null;
+
+        // Cargar el modelo de TensorFlow.js
+        (async () => {
+            console.log("CARGANDO MODELO...");
+            modelo = await tf.loadLayersModel('model.json'); // Asegúrate de que 'model.json' esté en la misma carpeta
+            console.log("MODELO CARGADO");
+        })();
+
+        // Función para predecir el precio
+        async function predictPrice() {
+            if (!modelo) {
+                alert("El modelo aún no se ha cargado. Por favor, espera.");
+                return;
+            }
+
+            // Obtener valores de entrada
+            const inputArea = parseFloat(document.getElementById("inputArea").value);
+            const inputRooms = parseFloat(document.getElementById("inputRooms").value);
+            const inputFloor = parseFloat(document.getElementById("inputFloor").value);
+            const inputElevator = parseFloat(document.getElementById("inputElevator").value);
+            const inputExterior = parseFloat(document.getElementById("inputExterior").value);
+            const inputState = parseFloat(document.getElementById("inputState").value);
+            const inputCentric = parseFloat(document.getElementById("inputCentric").value);
+
+            if ([inputArea, inputRooms, inputFloor, inputElevator, inputExterior, inputState, inputCentric].some(isNaN)) {
+                alert("Por favor, completa todos los campos correctamente.");
+                return;
+            }
+
+            // Crear el tensor con los valores ingresados
+            const tensorInput = tf.tensor2d([[0, inputArea, inputRooms, inputFloor, inputElevator, inputExterior, inputState, inputCentric]]);
+            const prediction = await modelo.predict(tensorInput).data();
+            const predictedPrice = prediction[0].toFixed(2);
+
+            // Mostrar el resultado en la página
+            document.getElementById("result").innerText = `El precio estimado es: S/${predictedPrice}`;
+
+            // Liberar la memoria del tensor
+            tensorInput.dispose();
+        }
+    </script>
+</body>
+
+</html>

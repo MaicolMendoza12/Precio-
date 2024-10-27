@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('img/14.png');
+    background-size: cover;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.navbar-nav .nav-link {
+    color: white;
+}
+
+.header-content {
+    text-align: left;
+    color: white;
+    padding-top: 50px;
+}
+
+.header-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.header-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.header-content .btn {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.form-section {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-section h4 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-section .btn {
+    background-color: #007bff;
+    border-color: #007bff;
+    margin-top: 10px;
+}
+
+#result {
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-top: 15px;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+}
+
+.left-section {
+    max-width: 50%;
+}
+
+.right-section {
+    width: 40%;
+}
