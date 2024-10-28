@@ -130,7 +130,7 @@
     "weightsManifest": [
         {
             "paths": [
-                "https://github.com/MaicolMendoza12/Precio-/raw/main/group2-shard2of2.bin"
+                "group2-shard2of2.bin"
             ],
             "weights": [
                 {
