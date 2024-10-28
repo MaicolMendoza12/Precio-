@@ -131,48 +131,43 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.21.0/dist/tf.min.js"></script>
 
+    
     <script type="text/javascript">
-        let modelo = null;
+    let modelo = null;
 
-        // Cargar el modelo de TensorFlow.js
-        (async () => {
-            console.log("CARGANDO MODELO...");
-            modelo = await tf.loadLayersModel('model.json') ; // Asegúrate de que 'model.json' esté en la misma carpeta
-            console.log("MODELO CARGADO");
-        })();
+    (async () => {
+      console.log("Cargando modelo...");
+      modelo = await tf.loadLayersModel('model.json'); 
+      console.log("Modelo cargado.");
+    })();
 
-        // Función para predecir el precio
-        async function predictPrice() {
-            if (!modelo) {
-                alert("El modelo aún no se ha cargado. Por favor, espera.");
-                return;
-            }
+    async function predictPrice() {
+      if (!modelo) {
+        alert("El modelo aún no se ha cargado. Por favor, espera.");
+        return;
+      }
 
-            // Obtener valores de entrada
-            const inputArea = parseFloat(document.getElementById("inputArea").value);
-            const inputRooms = parseFloat(document.getElementById("inputRooms").value);
-            const inputFloor = parseFloat(document.getElementById("inputFloor").value);
-            const inputElevator = parseFloat(document.getElementById("inputElevator").value);
-            const inputExterior = parseFloat(document.getElementById("inputExterior").value);
-            const inputState = parseFloat(document.getElementById("inputState").value);
-            const inputCentric = parseFloat(document.getElementById("inputCentric").value);
+      const inputArea = parseFloat(document.getElementById("inputArea").value);
+      const inputRooms = parseFloat(document.getElementById("inputRooms").value);
+      const inputFloor = parseFloat(document.getElementById("inputFloor").value);
+      const inputElevator = parseFloat(document.getElementById("inputElevator").value);
+      const inputExterior = parseFloat(document.getElementById("inputExterior").value);
+      const inputState = parseFloat(document.getElementById("inputState").value);
+      const inputCentric = parseFloat(document.getElementById("inputCentric").value);
 
-            if ([inputArea, inputRooms, inputFloor, inputElevator, inputExterior, inputState, inputCentric].some(isNaN)) {
-                alert("Por favor, completa todos los campos correctamente.");
-                return;
-            }
+      if ([inputArea, inputRooms, inputFloor, inputElevator, inputExterior, inputState, inputCentric].some(isNaN)) {
+        alert("Por favor, completa todos los campos correctamente.");
+        return;
+      }
 
-            // Crear el tensor con los valores ingresados
-            const tensorInput = tf.tensor2d([[0, inputArea, inputRooms, inputFloor, inputElevator, inputExterior, inputState, inputCentric]]);
-            const prediction = await modelo.predict(tensorInput).data();
-            const predictedPrice = prediction[0].toFixed(2);
+      const tensorInput = tf.tensor2d([[0, inputArea, inputRooms, inputFloor, inputElevator, inputExterior, inputState, inputCentric]]);
+      const prediction = await modelo.predict(tensorInput).data();
+      const predictedPrice = prediction[0].toFixed(2);
 
-            // Mostrar el resultado en la página
-            document.getElementById("result").innerText = `El precio estimado es: S/${predictedPrice}`;
-
-            // Liberar la memoria del tensor
-            tensorInput.dispose();
-        }
+      document.getElementById("result").innerText = `El precio estimado es: S/ ${predictedPrice}`;
+      
+      tensorInput.dispose();
+    }
     </script>
 </body>
 
